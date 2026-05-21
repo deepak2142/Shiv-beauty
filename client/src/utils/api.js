@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: '/api' });
+const API = axios.create({ baseURL: 'https://shiv-beauty.onrender.com' });
 
 // Products
 export const getProducts = (params) => API.get('/products', { params });
