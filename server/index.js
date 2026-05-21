@@ -12,6 +12,11 @@ const orderRoutes = require('./routes/orders');
 const adminRoutes = require('./routes/admin');
 
 const app = express();
+console.log("AUTH ROUTE FILE LOADED");
+
+const app = express();
+
+app.use("/api/auth", authRoutes);
 
 // Middleware
 app.use(cors());
