@@ -1,8 +1,7 @@
-const cors = require("cors");
-app.use(cors());
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const path = require('path');
 
 const authRoutes = require('./routes/auth');
@@ -11,9 +10,6 @@ const orderRoutes = require('./routes/orders');
 const adminRoutes = require('./routes/admin');
 
 const app = express();
-console.log("AUTH ROUTE FILE LOADED");
-
-app.use("/api/auth", authRoutes);
 
 // Middleware
 app.use(cors());
@@ -27,14 +23,20 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Health check
-app.get('/api/health', (req, res) => res.json({ status: 'OK', message: 'Shiv Beauty API running' }));
+app.get('/', (req, res) => {
+  res.send("Shiv Beauty API Running 🚀");
+});
 
-// Connect to MongoDB
+app.get('/api/health', (req, res) =>
+  res.json({ status: 'OK', message: 'Shiv Beauty API running' })
+);
+
+// MongoDB
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('✅ MongoDB connected');
     app.listen(process.env.PORT || 5000, () => {
-      console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
+      console.log(`🚀 Server running`);
     });
   })
   .catch(err => {
