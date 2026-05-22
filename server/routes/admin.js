@@ -9,7 +9,8 @@ const fs = require('fs');
 const path = require('path');
 
 // All admin routes are protected
-router.use(protect, adminOnly);
+router.use(protect);
+router.use(adminOnly);
 
 // --- PRODUCTS ---
 
