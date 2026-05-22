@@ -20,8 +20,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
+    "https://shiv-beauty-14ac1s2ei-deepak2142s-projects.vercel.app/",
     "https://shiv-beauty.vercel.app/"
-  
   ],
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
